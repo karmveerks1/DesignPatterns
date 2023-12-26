@@ -13,19 +13,20 @@ import java.util.Scanner;
 public class TicTacToeGame {
     public List<Player> players;
     public Board playingBoard;
+    private TicTocToeHelperI helper;
+    public TicTacToeGame(TicTocToeHelperI helper) {
+        this.helper = helper;
+    }
+
     public void initializeGame() {
-        // Need to create 2 players
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter number of players:");
+        int countOfPlayers = scanner.nextInt();
         players = new LinkedList<>();
-        PlayingPiece pp1 = new PlayingPiece(PieceType.X);
-        Player player1 = new Player(pp1,"Rupesh",18);
-
-        PlayingPiece pp2 = new PlayingPiece(PieceType.O);
-        Player player2 = new Player(pp2,"Karmveer",1);
-        players.add(player1);
-        players.add(player2);
-
-        // Create Board
-        playingBoard = new Board(3);
+        helper.enterPlayers(players,countOfPlayers);
+        System.out.println("Enter Board Size:");
+        int boardSize = scanner.nextInt();
+        playingBoard = new Board(boardSize);
     }
 
     public String startGame(){

@@ -1,7 +1,7 @@
 package LLD.ticTac.model;
 
 public enum PieceType {
-    X("X"),O("O"),N(" ");
+    X("X"),O("O"),N(" "),S("*"),H("#"),D("$");
 
     String value ;
 
